@@ -22,5 +22,5 @@
 
 // at most one of the following two should be uncommented
 // if both are commented out, use the solution code
-//#define MYRDBUF_C         // when defined will use your rdbuf.c 
+//#define MYRDBUF_C         // when defined will use your Crdbuf.c 
 //#define MYRDBUF_S         // when defined will use your rdbuf.S 
