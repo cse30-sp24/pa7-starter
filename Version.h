@@ -17,7 +17,7 @@
 
 // at most one of the following two should be uncommented
 // if both are commented out, use the solution code
-//#define MYMAIN_C          // when defined will use your main.c
+//#define MYMAIN_C          // when defined will use your Cmain.c
 //#define MYMAIN_S          // when defined will use your main.S
 
 // at most one of the following two should be uncommented
