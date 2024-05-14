@@ -28,6 +28,15 @@
     .global rdbuf
     // determine how many registers to save and set FP_OFF
     //.equ    FP_OFF, ??
+
+   // preserved register use table
+   //
+   // r4
+   // r5
+   // r6
+   // r7
+   // r8
+   // r9
  
 rdbuf:
     // set up stack frame

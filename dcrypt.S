@@ -32,7 +32,15 @@ dcrypt:
    // r1 contains char *bookbuf
    // r2 contains cnt
    // r3 is ok to use
-   // r4-r9 preserved registers are ok to use
+   //
+   // preserved register use table
+   //
+   // r4
+   // r5
+   // r6
+   // r7
+   // r8
+   // r9
 
     cmp     r2, 0               // if buffer is empty we are done
     ble     .Ldone
