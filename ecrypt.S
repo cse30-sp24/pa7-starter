@@ -16,7 +16,7 @@
     .text     // start of text segment
 
     //////////////////////////////////////////////////
-    // int ecrypt(char *inbuf, char *bookbuf, int cnt)
+    // int ecrypt(unsigned char *inbuf, unsigned char *bookbuf, int cnt)
     // encrypts  inbuf with bookbuf; updating inbuf
     //////////////////////////////////////////////////
     .global ecrypt
