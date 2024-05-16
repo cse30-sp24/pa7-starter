@@ -47,23 +47,27 @@ setup(int argc, char **argv, int (**func)(), FILE **fpbook)
     if (((dflag == 0) && (eflag == 0)) || ((dflag == 1) && (eflag == 1))) {
         fprintf(stderr, "%s: You must specify either -e or -d\n", *argv);
         fprintf(stderr, "Usage: %s [-d|-e] -b <bookfile>\n", *argv);
+        *func = NULL;
         return RETRN_FAIL;
     }
 
     if (optind != argc) {
         fprintf(stderr, "Usage: %s [-d|-e] -b <bookfile>\n", *argv);
+        *func = NULL;
         return RETRN_FAIL;
     }
 
     if (bookname == NULL) {
         fprintf(stderr, "%s: -b bookfile must be specified\n", *argv);
         fprintf(stderr, "Usage: %s [-d|-e] -b <bookfile>\n", *argv);
+        *func = NULL;
         return RETRN_FAIL;
     }
 
     /* open the bookfile */
     if ((*fpbook = fopen(bookname, "r")) == NULL) {
         fprintf(stderr, "%s: Unable to open bookfile %s\n", *argv, bookname);
+        *func = NULL;
         return RETRN_FAIL;
     }
     return RETRN_OK;
