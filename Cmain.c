@@ -57,12 +57,12 @@ main(int argc, char **argv)
     //
     // complete the io loop
     //
-    // if rdbuf() fails it returns RETRN_FAIL then
+    // if rdbuf() fails it returns RETRN_FAIL then do the following:
     // fprintf(stderr, "%s: read failed\n", argv0);
     // return EXIT_FAILURE;
     // 
-    // if fwrite fails to write all the chars rdbuf() says are in innbuf,
-    // then
+    // if fwrite fails to write all the chars rdbuf() says are in inbuf, 
+    // then do the following:
     // fprintf(stderr, "%s: write failed\n", argv0);
     // (void)fclose(fpbook);
     // return EXIT_FAILURE; 
