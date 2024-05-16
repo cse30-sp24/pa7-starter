@@ -29,7 +29,7 @@
  *
  * Returns
  * 0        when EOF is reached on the in
- * bytes    bytes number of bytes actuall read
+ * bytes    bytes number of bytes actually read
  * RETRN_FAIL
  *          when the read on bookbuf does not return bytes
  */
