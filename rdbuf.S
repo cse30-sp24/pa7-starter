@@ -20,8 +20,25 @@
     //////////////////////////////////////////////////////
     // int rdbuf(FILE *in, FILE *book, int cnt, unsigned char *inbuf,
     //          unsigned char *bookbuf)
-    // returns number of bytes read RETRN_FAIL otherwise
     // OBSERVE this has 5 arguments!
+    //
+    // This function reads up to cnt bytes into inbuf from FILE *in such
+    // as bytes = fread(). bytes is the actual number of bytes read.
+    // Then read the same number of bytes from the FILE *book into the
+    // buffer bookbuf.
+    // 
+    //  Arguments
+    //  in       pointer of type file where the input data is read from
+    //  book     pointer of type FILE where the bookfile is read from
+    //  cnt      max number of bytes to read into inbuf
+    //  inbuf    buffer where the input data is read into
+    //  bookbuf  buffer where the bookfile data is read into
+    // 
+    //  Returns
+    //  0        when EOF is reached on the in
+    //  bytes    bytes number of bytes actually read
+    //  RETRN_FAIL
+    //           when the read on bookbuf does not return bytes
     //////////////////////////////////////////////////////
 
     .type   rdbuf, %function
@@ -29,7 +46,7 @@
     // determine how many registers to save and set FP_OFF
     //.equ    FP_OFF, ??
 
-   // preserved register use table
+   // preserved register use table fill this in to help you
    //
    // r4
    // r5
@@ -41,9 +58,9 @@
 rdbuf:
     // set up stack frame
 
-    // fread()
+    // fread() the FILE *in
 
-    // fread()
+    // fread() the FILE *book
 
 .Ldone:
     // remove stack frame
