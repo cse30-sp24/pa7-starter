@@ -55,7 +55,7 @@
     //.equ    FRMADD,OARG5-FP_OFF     // total space for locals + outarg5
 
     //
-    // preserved register use table
+    // preserved register use table fill this in describing your use for each
     //
     // r4
     // r5
@@ -71,9 +71,10 @@ main:
 
     // allocate space for locals and outgoing args below
      
-    // call int setup(argc, argv, *mode, *FPBOOK)
+    // call int setup(argc, argv, &func, &fpbook)
 
-    // set up for main loop
+    // initialize the preserved registers and stack variables
+    // for main loop
 
     //
     // top of loop
@@ -83,7 +84,7 @@ main:
     //
     
     //
-    // cnt = XXcrypt(unsigned char *inbuf, unsigned char *bookbuf, int cnt)
+    // cnt = func(unsigned char *inbuf, unsigned char *bookbuf, int cnt)
     //
 
     //
