@@ -16,9 +16,10 @@
 /*
  * rdbuf
  *
- * This function reads up to cnt bytes into inbuf from FILE *in using bytes = fread(). 
- * bytes is the actual number of bytes read. Then read the same number of bytes from the 
- * FILE *book into the buffer bookbuf.
+ * This function reads up to cnt bytes into inbuf from FILE *in such 
+ * as bytes = fread(). bytes is the actual number of bytes read. 
+ * Then read the same number of bytes from the FILE *book into the
+ * buffer bookbuf.
  *
  * Arguments
  * in       pointer of type file where the input data is read from
