@@ -20,6 +20,7 @@ setup(int argc, char **argv, int (**func)(), FILE **fpbook)
      * by faulty code
      */
     *fpbook = NULL;
+    *func = NULL;
     
     while ((opt = getopt(argc, argv, "edb:")) != -1) {
         switch (opt) {
