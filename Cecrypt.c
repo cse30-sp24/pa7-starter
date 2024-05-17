@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include "cipher.h"
 
+// encrypts  inbuf with bookbuf; updating inbuf
 int
 ecrypt(unsigned char *inbuf, unsigned char *bookbuf, int cnt)
 {

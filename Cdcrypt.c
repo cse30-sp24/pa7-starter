@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include "cipher.h"
 
+// decrypts inbuf with bookbuf; updating inbuf
 int
 dcrypt(unsigned char *inbuf, unsigned char *bookbuf, int cnt)
 {
