@@ -44,11 +44,14 @@
 
     //
     // add your local variables here if you need them:
-    // NOTICE: Adjust PAD so FRMADD + FP_OFF + 4 divides by 8 EVENLY!
     //
+
+    // NOTICE: Adjust PAD so the total size of frame (including 
+    // preserved registers r4-r10, fp,lr) in bytes divides by 8 evenly
+    // (8-byte aligned) keep the two buffers 8-byte aligned as well
     //.equ    PAD,             	    // Stack frame PAD
     //.equ    OARG5,           	    // output arg5 must be at bottom
-    //.equ    FRMADD,OARG5-FP_OFF     // total space for locals + outarg5
+    //.equ    FRMADD,OARG5-FP_OFF   // total space for locals + outarg5
 
     //
     // preserved register use table fill this in describing your use for each
