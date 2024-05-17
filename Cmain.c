@@ -18,7 +18,7 @@
 
 /*
  * cipher program
- * usage:  cipher 9-d|-s) -b bookfile
+ * usage:  cipher [-d|-s) -b bookfile
  * cipher reads the data to be processed from standard input, either
  * encrypts (-e) or decrypts (-d) the data, and then writes the result
  * to standard output.
