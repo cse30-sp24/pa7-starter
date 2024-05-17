@@ -28,15 +28,15 @@
     // buffer bookbuf.
     // 
     //  Arguments
-    //  in       pointer of type file where the input data is read from
-    //  book     pointer of type FILE where the bookfile is read from
+    //  in       pointer of type FILE where the input data is read from
+    //  fobook   pointer of type FILE where the bookfile is read from
     //  cnt      max number of bytes to read into inbuf
     //  inbuf    buffer where the input data is read into
     //  bookbuf  buffer where the bookfile data is read into
     // 
     //  Returns
     //  0        when EOF is reached on the in
-    //  bytes    bytes number of bytes actually read
+    //  bytes    number of bytes actually read
     //  RETRN_FAIL
     //           when the read on bookbuf does not return bytes
     //////////////////////////////////////////////////////
@@ -58,9 +58,13 @@
 rdbuf:
     // set up stack frame
 
-    // fread() the FILE *in
+     // fread() from FILE *in into inbuf
+     // now fread() the same number of bytes from the bookfp
+     // as was read from the input FILE *in into bookbuf
+     // if bytes read from bookfile is not the same as read into inbuf,
+     // then return RETRN_FAIL;
 
-    // fread() the FILE *book
+     // return the number of bytes read
 
 .Ldone:
     // remove stack frame
