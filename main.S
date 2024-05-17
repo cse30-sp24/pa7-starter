@@ -20,25 +20,21 @@
     .extern stdin
     .extern stdout
     .extern stderr
-
-    .section .rodata
-    //
-    // string literals for fprint
-    //
-.Lrdmess:  .string "%s: read failed\n"
-.Lwrmess:  .string "%s: write failed\n"
-
-    .text
-
     //
     // cipher [-d | -e] -b bookfile
     //
     // int main(int argc, char **argv)
     //
 
+    .section .rodata
+    // string literals for fprint
+.Lrdmess:  .string "%s: read failed\n"
+    .align 2
+.Lwrmess:  .string "%s: write failed\n"
+
+    .text
     .global main
     .type   main, %function
-
     //
     // complete the stack frame layout
     //
