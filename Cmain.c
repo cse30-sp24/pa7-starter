@@ -14,66 +14,53 @@
 #include "setup.h"
 #include "cipher.h"
 
-// version 1.1 05/08/2024
-
-/*
- * cipher program
- * usage:  cipher [-d|-s) -b bookfile
- * cipher reads the data to be processed from standard input, either
- * encrypts (-e) or decrypts (-d) the data, and then writes the result
- * to standard output.
- */
+// version 1.2 05/24/2024
 
 int
 main(int argc, char **argv)
 {
     /*
-     * local vars on stack these are given to help you write main.S later
-     * it is suggested that you not change the order of the vars.
+     * local vars on stack
      */
     FILE *fpbook;                   // File * to bookfile
-    unsigned char inbuf[BUFSZ];     // input buffer - same size as bookbuf
-    unsigned char bookbuf[BUFSZ];   // output buffer - same size as inbuf
-    int (*func)();                  // function pointer to ecrypt or dcrypt
+    unsigned char inbuf[BUFSZ];     // input buffer
+    unsigned char bookbuf[BUFSZ];   // output buffer
+    int (*func)(unsigned char *, unsigned char *, int);
+                                    // function ptr ecrypt or dcrypt
     char *argv0 = *argv;            // saved argv[0] for fprintf()
-    // end of required stack variables
+    // end of stack variables
+
+    int cnt;            // does not need to be on stack (used as r0)
 
     /*
-     * call setup which does:
-     * (1) parse the command line arguments, (2) func is set to point at either
-     * ecrypt or dcrypt and open the book file
+     * parse the command line arguments, set mode (encrypt or decrypt)
+     * and open the book file
      */
     if (setup(argc, argv, &func, &fpbook) == RETRN_FAIL)
         return EXIT_FAILURE;
 
     /*
-     * (1) use rdbuf() to read the input from stdin into inbuf and read 
-     * the book file into bookbuf until EOF on the input file. Pass
-     * rdbuf() BUFSZ as the size of the buffers 
-     * (2) Call func to encrypt or decrypt
-     * (3) use fwrite() to write inbuf to stdout. Make sure to check that
-     *  fwrite() writes all the valid contents contained in inbuf.
+     * read the input and book file until EOF on the input file
+     * Either func points at encrypt or decrypt
+     * then write it out.
      */ 
-    //
-    // complete the io loop
-    //
-    // if rdbuf() fails it returns RETRN_FAIL then do the following:
-    // fprintf(stderr, "%s: read failed\n", argv0);
-    // return EXIT_FAILURE;
-    // 
-    // if fwrite fails to write all the chars rdbuf() says are in inbuf, 
-    // then do the following:
-    // fprintf(stderr, "%s: write failed\n", argv0);
-    // (void)fclose(fpbook);
-    // return EXIT_FAILURE; 
-    // end of loop
+    while ((cnt = rdbuf(stdin, fpbook, BUFSZ, inbuf, bookbuf)) > 0) {
+        cnt = func(inbuf, bookbuf, cnt);
+        if ((int)fwrite(inbuf, 1, cnt, stdout) != cnt) {
+            fprintf(stderr, "%s: write failed\n", argv0);
+            (void)fclose(fpbook);
+            return EXIT_FAILURE; 
+        }
+    }
 
-    //
-    //  do not forget to close the book file
-    //  (void)fclose(fpbook);
-    //  return EXIT_FAILURE if anything failed to operate properly
-    //
-
+    /*
+     * close the book file
+     */
+    (void)fclose(fpbook);
+    if (cnt == RETRN_FAIL) {
+        fprintf(stderr, "%s: read failed\n", argv0);
+        return EXIT_FAILURE;
+    }
     return EXIT_SUCCESS;
 }
 #endif
