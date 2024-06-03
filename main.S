@@ -17,6 +17,7 @@
     #include "setup.h"
     #include "cipher.h"
     .extern fwrite
+    .extern fprintf
     .extern stdin
     .extern stdout
     .extern stderr
