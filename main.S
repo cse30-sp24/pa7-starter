@@ -18,6 +18,7 @@
     #include "cipher.h"
     .extern fwrite
     .extern fprintf
+    .extern fclose
     .extern stdin
     .extern stdout
     .extern stderr
